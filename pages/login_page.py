@@ -18,3 +18,8 @@ class LoginPage(BasePage):
     def should_be_register_form(self):
         list_res = self.browser.find_elements(*LoginPageLocators.FORM_LOGIN)
         assert len(list_res)==1,'should be register form'
+    def register_new_user(self, email, password):
+        self.browser.find_element(*LoginPageLocators.FORM_LOGIN).send_keys(email)
+        self.browser.find_element(*LoginPageLocators.FORM_REGISTRATION).send_keys(password)
+        self.browser.find_element(*LoginPageLocators.BUTTON_LOG_IN).click()
+
